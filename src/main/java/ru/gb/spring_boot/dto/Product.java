@@ -1,24 +1,35 @@
 package ru.gb.spring_boot.dto;
 
-public class Product {
-    private int id;
-    private String title;
-    private float cost;
+import javax.persistence.*;
 
-    public Product(int id, String title, float cost) {
-        this.id = id;
+@Entity
+@Table(name = "product")
+public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "price")
+    private int price;
+
+    public Product(String title, int price) {
         this.title = title;
-        this.cost = cost;
+        this.price = price;
     }
 
     public Product() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -30,11 +41,11 @@ public class Product {
         this.title = title;
     }
 
-    public float getCost() {
-        return cost;
+    public float getPrice() {
+        return price;
     }
 
-    public void setCost(float cost) {
-        this.cost = cost;
+    public void setPrice(int price) {
+        this.price = price;
     }
 }
